@@ -12,6 +12,6 @@ public class TestAll {
 	@Test
 	public void testSuma(){
 		Calculadora calculadora = new Calculadora();		
-	    assertEquals(calculadora.suma(1,1),3);
+	    assertEquals(calculadora.suma(1,1),2);
 	}
 }
