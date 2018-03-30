@@ -5,3 +5,7 @@
 build/
 .idea/
 voland.iml
+gradle/
+gradlew
+gradlew.bat
+out/
