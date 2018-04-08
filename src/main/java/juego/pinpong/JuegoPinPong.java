@@ -1,5 +1,6 @@
 package juego.pinpong;
 
+import juego.pinpong.model.CustomKeyListener;
 import juego.pinpong.model.MesaDePinPong;
 import sun.swing.SwingAccessor;
 
@@ -20,16 +21,17 @@ public class JuegoPinPong {
      * Inicializo la mesa de pinpong
      */
     public void init(){
-        mesaDePinPong = new MesaDePinPong(400,300);
-        mesaDePinPong.setVisible(true);
+        mesaDePinPong = new MesaDePinPong(300,400);
+        mesaDePinPong.addPaleta();
+        mesaDePinPong.addPelota();
     }
     public void loop(){
 
         while (true){
-            mesaDePinPong.ciclo();
+            mesaDePinPong.move();
             mesaDePinPong.repaint();
             try{
-                Thread.sleep(10);
+                Thread.sleep(5);
             }catch (InterruptedException ie){
                 System.out.println("error "+ ie.getMessage());
             }
