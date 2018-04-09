@@ -5,13 +5,12 @@ import java.awt.*;
 
 public class Pelota extends JPanel {
 
+    private static final int DIAMETER = 30;
     private int x  = 0;
     private int y  = 0;
     private int xa = 1;
     private int ya = 1;
     private MesaDePinPong mesaDePinPong;
-    //private int moverEnX = 1;
-    //private int moverEnY = 1;
 
     public Pelota(MesaDePinPong mesaDePinPong){
       this.mesaDePinPong = mesaDePinPong;
@@ -25,16 +24,28 @@ public class Pelota extends JPanel {
     void move() {
         if (x + xa < 0)
             xa = 1;
-        if (x + xa > mesaDePinPong.getWidth() - 30)
+        if (x + xa > mesaDePinPong.getWidth() - DIAMETER)
             xa = -1;
         if (y + ya < 0)
             ya = 1;
-        if (y + ya > mesaDePinPong.getHeight() - 30)
+        if (y + ya > mesaDePinPong.getHeight() - DIAMETER)
+            mesaDePinPong.gameOver();
+        if (collision()){
             ya = -1;
-
+            y = mesaDePinPong.getPaleta().getTopY() - DIAMETER;
+        }
         x = x + xa;
         y = y + ya;
     }
+
+    private boolean collision() {
+        return mesaDePinPong.getPaleta().getBounds().intersects(getBounds());
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, DIAMETER, DIAMETER);
+    }
+
 
     /***
      *

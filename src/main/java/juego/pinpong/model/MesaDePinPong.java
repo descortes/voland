@@ -46,6 +46,11 @@ public class MesaDePinPong extends JPanel {
         });
     }
 
+    public void gameOver(){
+        JOptionPane.showMessageDialog(this,"Game Over","Game Over",JOptionPane.YES_NO_OPTION);
+        System.exit(ABORT);
+    }
+
     @Override
     public void paint(Graphics graphics){
         super.paint(graphics);
@@ -58,5 +63,9 @@ public class MesaDePinPong extends JPanel {
     public void move() {
         this.paleta.move();
         this.pelota.move();
+    }
+
+    public Paleta getPaleta() {
+        return this.paleta;
     }
 }
